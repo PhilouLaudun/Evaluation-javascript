@@ -1,13 +1,83 @@
+
+
 body {
+    /* mise en place du cadre externe et suppression des ascenseurs" */
     background: linear-gradient(to bottom right, rgba(165, 42, 42, 0.308), brown);
-    min-height: 100vh;
+    min-height: 98vh;
     min-width: 85vw;
     overflow-x: hidden;
     overflow-y: hidden;
+
+    /* mise en place de la grille pour les éléments du jeu" */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "Newgame Newgame Newgame"
+        "Player1 Player1 Player1"
+        "Courant1 vide1 Global1"
+        "Rolldice des Hold"
+        "Courant2 vide2 Global2"
+        "Player2 Player2 Player2";
 }
 main {
+    /* mise en place du cadre interne" */
+
+}
+.centrage {
+    display:flex; 
+    align-items: center;
+    justify-content: center;
+}   
+    
+.zoneBtnNewGame, .Joueur1, .Joueur2,.Global1, .Global2, .Courant1, .Courant2, .vide1, .vide2, .Rolldice, .Des, .Hold {
     background: white;
-    min-height : 96vh;
-    min-width : 95%;
-    margin : 1%;
+}
+.zoneBtnNewGame {
+    grid-area: Newgame;
+    
+}
+.BtnNewGame {
+    text-decoration: none;
+    padding: 10px;
+    font-family: arial;
+    font-size: .8em;
+    color: #a5a5a5;
+    background-color: #f2f2f2;
+    border-radius: 24px;
+    border: 4px solid #FFFFFF;
+    box-shadow: 3px 3px 12px #444444;
+}
+.Joueur1 {
+    grid-area: Player1;
+}
+.Joueur2 {
+    grid-area: Player2;
+}
+.Global1 {
+    grid-area: Global1;
+}
+.Global2 {
+    grid-area: Global2;
+}
+.Courant1 {
+    grid-area: Courant1;
+}
+.Courant2 {
+    grid-area: Courant2;
+}
+.vide1 {
+    grid-area: vide1;
+}
+.vide2 {
+    grid-area: vide2;
+}
+.Rolldice {
+    grid-area: Rolldice;
+}
+.Des {
+    grid-area: des;
+}
+.Hold {
+    grid-area: Hold;
 }
