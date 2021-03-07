@@ -1,0 +1,13 @@
+body {
+    background: linear-gradient(to bottom right, rgba(165, 42, 42, 0.308), brown);
+    min-height: 100vh;
+    min-width: 85vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+main {
+    background: white;
+    min-height : 96vh;
+    min-width : 95%;
+    margin : 1%;
+}
