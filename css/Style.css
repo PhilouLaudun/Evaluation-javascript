@@ -30,7 +30,20 @@ body {
     display:flex; 
     align-items: center;
     justify-content: center;
-}   
+}
+.scorecourrant {
+    display :flexbox;
+    text-align: center;
+    width: 3em;
+    font-size: 0.8em;
+    color: rgb(177, 165, 165);
+    font-weight: 100 ;
+}
+.policecourrant {
+    font-size: 0.5em;
+    color: black;
+    font-weight: bold ;
+}
     
 .zoneBtnNewGame, .Joueur1, .Joueur2,.Global1, .Global2, .Courant1, .Courant2, .vide1, .vide2, .Rolldice, .Des, .Hold {
     background: white;
@@ -61,10 +74,11 @@ body {
     font-weight: bold ;
 }
 .Texteglobal {
-    font-size: 6em;
+    font-size: 8em;
     color: rgb(177, 165, 165);
     font-weight: 100 ;
 }
+
 .Joueur1 {
     grid-area: Player1;
 }
