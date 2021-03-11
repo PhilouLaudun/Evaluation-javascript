@@ -4,7 +4,8 @@
 html {
     font-family: 'Lato', Arial, Helvetica, sans-serif;
 }
-
+/* ------------------------------------------------------------------------------------------------------------- */
+/* Mise en forme générale pour l'ensemble de la page */
 body {
     /* mise en place du cadre externe et suppression des ascenseurs" */
     background: linear-gradient(to bottom right, rgba(165, 42, 42, 0.308), brown);
@@ -13,7 +14,7 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
 
-    /* mise en place de la grille pour les éléments du jeu" */
+    /* mise en place de la grille pour les éléments du jeu en mode mobile first" */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: .5fr .8fr 1fr 2fr 1fr .8fr;
@@ -25,12 +26,17 @@ body {
         "Courant2 vide2 Global2"
         "Player2 Player2 Player2";
 }
+/* ------------------------------------------------------------------------------------------------------------- */
+/* Mise en forme générale des différentes cellules */
 
+/* Centrage des éléments dans les cellules */
 .centrage {
     display:flex; 
     align-items: center;
     justify-content: center;
 }
+
+/* Définition et mise en forme des 2 zones spécifiques au score courant des joueurs  */
 .scorecourrant {
     display :flexbox;
     text-align: center;
@@ -38,21 +44,17 @@ body {
     font-size: 0.8em;
     color: rgb(177, 165, 165);
     font-weight: 100 ;
+    background: red;
 }
+/* Mise en forme du titre  des 2 zones spécifiques au score courant des joueurs  */
 .policecourrant {
     font-size: 0.5em;
     color: black;
     font-weight: bold ;
 }
     
-.zoneBtnNewGame, .Joueur1, .Joueur2,.Global1, .Global2, .Courant1, .Courant2, .vide1, .vide2, .Rolldice, .Des, .Hold {
-    background: white;
-}
-.zoneBtnNewGame {
-    grid-area: Newgame;
-    
-}
-.BtnNewGame {
+/* Mise en forme des boutons de commandes du jeu */
+.Boutonjeu {
     text-decoration: none;
     padding: 10px;
     font-style: italic;
@@ -64,50 +66,73 @@ body {
     border: 4px solid #FFFFFF;
     box-shadow: 3px 3px 12px #444444;
 }
+
+/* Mise en forme globale du texte des zones joueurs et score global */
 .Textejoueur , .Texteglobal{
     padding: 10px;
 }
+
+/* Mise en forme du texte des zones joueur */
 .Textejoueur {
     font-size: 4em;
     color: lightgray;
     font-style: italic;
     font-weight: bold ;
 }
+
+/* Mise en forme du texte des zones du score global*/
 .Texteglobal {
     font-size: 8em;
     color: rgb(177, 165, 165);
     font-weight: 100 ;
 }
 
+/* ------------------------------------------------------------------------------------------------------------- */
+/* Définition des différentes zones du jeu*/
+
+/* FOnd blanc pour toutes les cellules */
+.zoneBtnNewGame, .Joueur1, .Joueur2,.Global1, .Global2, .Courant1, .Courant2, .vide1, .vide2, .Rolldice, .Des, .Hold {
+    background: white;
+}
+/* zone du bouton New Game */
+.zoneBtnNewGame {
+    grid-area: Newgame;
+}
+/* Zones des joueurs */
 .Joueur1 {
     grid-area: Player1;
 }
 .Joueur2 {
     grid-area: Player2;
 }
+/* Zones des scores globaux */
 .Global1 {
     grid-area: Global1;
 }
 .Global2 {
     grid-area: Global2;
 }
+/* Zones des scores courants */
 .Courant1 {
     grid-area: Courant1;
 }
 .Courant2 {
     grid-area: Courant2;
 }
+/* Zones des cellules vides*/
 .vide1 {
     grid-area: vide1;
 }
 .vide2 {
     grid-area: vide2;
 }
+/* Zone des boutons Rolldice et Hold */
 .Rolldice {
     grid-area: Rolldice;
     display: grid;
     justify-content: center;
 }
+/* Zones de l'image du dés */
 .Des {
     grid-area: des;
 }
@@ -136,10 +161,8 @@ body {
             "Global1 des Global2"
             "Courant1 Rolldice Courant2" ;
     }
+    /* Suppression de l'affichage du vide entre les scores gloabux et cournats du joueur 2 */
     .vide2 {
-        display: none;
-    }
-    .Hold {
         display: none;
     }
 } 
