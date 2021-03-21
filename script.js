@@ -21,6 +21,9 @@ function Remiseazero() {
     Imagedes.attr('src','/image/Image des 1.png') /* affiche l'image du dé par défaut, en l'occurence 1 */
     Joeurencours = Generernombre(2) /* choisit au hasard le joueur quii commence */
     scorecourant = 0 /* met le score courant à 0 */
+    $("#btnRollDice").attr('disabled',false) /* valide le bouton Roll Dice */
+    $("#btnHold").attr('disabled',false) /* valide le bouton Hold */
+    $("#zoneGagnant").hide()
 
 
 } 
@@ -66,7 +69,16 @@ function Echangejoueur () {
     Affichagescore (addressescore,0) /* Efface le score courant du joueur */
     /* change le point et le cadre signalant le joueur en cours */ 
 
-}   
+}
+/* Joueur Gagnant */
+function Gagnant () {
+    $("#btnRollDice").attr('disabled',true) /* invalide le bouton Roll Dice */
+    $("#btnHold").attr('disabled',true) /* invalide le bouton Hold */
+    $("#zoneGagnant").show()
+    var message="Joueur "+Joeurencours
+    $("#nomGagnant").text(message)
+
+} 
 /* ---------------------------------------------------------------------------------------------------------------------------*/
 /* Déroulement du jeu */
 Remiseazero() /* Initialisation du jeu */
@@ -94,9 +106,7 @@ $("#btnRollDice").on("click", function() {
 
 /* Attente que le joueur en cours click sur le bouton Newgame */
 $("#btnNewGame").on("click", function() {
-    alert("fonction NewGame")
-
-
+    Remiseazero()
 })
 
 /* Attente que le joueur en cours click sur le bouton Hold */
@@ -107,9 +117,7 @@ $("#btnHold").on("click", function() {
     Joueur [Joeurencours-1] = scoreglobaljoueurencours
     Affichagescore (addressescore,scoreglobaljoueurencours) /* affiche le score courant du joueur */
     if (scoreglobaljoueurencours >= 100) {
-        message = "Joueur"+Joeurencours+" Gagnant"
-        alert (message)
-        Remiseazero()
+        Gagnant()
     }
     Echangejoueur()
 })
