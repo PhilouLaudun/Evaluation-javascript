@@ -1,21 +1,28 @@
 /* Définition des variables d'adressage des scores*/
-const Scoreglob1 = $('#Global1') /* score global du joueur 1 */
-const Scorecoub1 = $('#Scourant1') /* score courant du joueur 1 */
-const Scoreglob2 = $('#Global2') /* score global du joueur 2 */
-const Scorecoub2 = $('#Scourant2') /* score courant du joueur 2 */
 const Imagedes = $('#imagedes') /* image du dés */
-var scorecouranttest = 0
-
+var Joueur = [0,0] /* tableau contenant le score global des joueurs */
+var compteur = 0 /* variable servant de compteur pour les routines de boucle" */
+var scorecourant = 0 /* variable contenant le score courant du joueur en cours*/
+var Joeurencours = 1 /* variable contenant le numéro du joeur en cours */
+var addressescore /* variable contenant l'id de la balise du score à modifier */
+var scoreglobaljoueurencours /* variable contenant le score global du joueur en cours */
 
 /* Initialisation du jeux */
 function Remiseazero() {
-    Scoreglob1.text('0') /* met le score global du joueur 1 à zéro */
-    Scorecoub1.text('0') /* met le score courant du joueur 1 à zéro */
-    Scoreglob2.text('0') /* met le score global du joueur 2 à zéro */
-    Scorecoub2.text('0') /* met le score courant du joueur 1 à zéro */
-    Imagedes.attr('src','/image/Image des 3.png'); /* ! pour les essais on laisse à 3 mais pour le jeu on remettra à 1, on utilse la focntion affichage */
+    /* Remet tous les scores à 0 */
+    for (compteur=1;compteur <=2; compteur++) {
+        addressescore = '#Scourant'+compteur
+        Affichagescore (addressescore,0) /* affiche le score courant du joueur */ 
+        addressescore = '#Global'+compteur
+        Affichagescore (addressescore,70) /* affiche le score global du joueur */
+        Joueur [compteur-1]  = 70 /* a modifier à 0 quand la fonction joueur gagnant focntionnera */
+    }
+    
+    Imagedes.attr('src','/image/Image des 1.png') /* affiche l'image du dé par défaut, en l'occurence 1 */
+    Joeurencours = Generernombre(2) /* choisit au hasard le joueur quii commence */
+    scorecourant = 0 /* met le score courant à 0 */
 
-    /* pour l'heure on fait comme cela mais par la suite on utilisera les propriétés des joueurs qu'on affichera */
+
 } 
 /* Génération d'un nombre aléatoire compris entre 1 et la borne supérieure passée en paramètre */
 function Generernombre (bornemax) {    
@@ -23,7 +30,7 @@ function Generernombre (bornemax) {
 }
 /* Affichage d'un score */
 function Affichagescore (adresse, score) {
-    adresse.text(score)
+    $(adresse).text(score)
 }
 /* Affichage de l'image du dé en fonction du nombre généré */
 function Affichageimagede (numero) {
@@ -45,24 +52,64 @@ function Rotationde () {
         },10)
         
     }
+/* Echange des joueurs  */
+function Echangejoueur () {
+    addressescore = '#Scourant'+Joeurencours /* Génére l'adresse du score courant du joueur en cours */
+    Affichagescore (addressescore,0) /* Efface le score courant du joueur en cours*/
+    /* Echange les joueur en cours */
+        if (Joeurencours == 1) Joeurencours = 2
+        else {
+            Joeurencours = 1
+        }
+    scorecourant=0 /* efface le score courant */
+    addressescore = '#Scourant'+Joeurencours /* Génére l'adresse du score courant du joueur en cours */
+    Affichagescore (addressescore,0) /* Efface le score courant du joueur */
+    /* change le point et le cadre signalant le joueur en cours */ 
+
+}   
 /* ---------------------------------------------------------------------------------------------------------------------------*/
 /* Déroulement du jeu */
-/* Remiseazero() */
+Remiseazero() /* Initialisation du jeu */
+
 /* Attente que le joueur en cours click sur le bouton RollDice */
 $("#btnRollDice").on("click", function() {
-   const nombreAleatoire = Generernombre(6); /* Génére un nombre aléatoire entre 1 et 6 */
+    $("#btnHold").attr('disabled',true)
+    const nombreAleatoire = Generernombre(6); /* Génére un nombre aléatoire entre 1 et 6 */
    Rotationde () /* Fait tourner le dés */
    setTimeout ( () => { /* Génére un intervalle de temps pour laisser au dé le temps de tourner avant de continuer le reste du programme */
    Affichageimagede (nombreAleatoire) /* Affiche le dé correspondant au nombre tiré */
    if (nombreAleatoire == 1) { /* si le 1 est tiré, on annule tout et on change de joueur */
-       /* compteur courant joueur en cours à zéro
-       compteur courant autre joueur à 0
-       change le joueur
-       change le point et le cadre signalant le joueur en cours */ 
-   } else {
-       scorecouranttest += nombreAleatoire /* augmente le score courant du joueur */
-       Affichagescore (Scorecoub1,scorecouranttest) /* affiche le score courant du joueur */
+       Echangejoueur() /* echange les joeurs et met à 0 les scores courants */
+   } else { /* sinon on augmente le score courant du joueur en cours */
+       scorecourant += nombreAleatoire /* augmente le score courant du joueur */
+       addressescore = '#Scourant'+Joeurencours
+       Affichagescore (addressescore,scorecourant) /* affiche le score courant du joueur */
        /* score courant devient supérieur à 100 alors declare le joueur gagnant */
    }
+   $("#btnHold").attr('disabled',false)
 },1500)
+})
+
+
+
+/* Attente que le joueur en cours click sur le bouton Newgame */
+$("#btnNewGame").on("click", function() {
+    alert("fonction NewGame")
+
+
+})
+
+/* Attente que le joueur en cours click sur le bouton Hold */
+$("#btnHold").on("click", function() {
+    scoreglobaljoueurencours = Joueur [Joeurencours-1] 
+    scoreglobaljoueurencours += scorecourant
+    addressescore = '#Global'+ Joeurencours
+    Joueur [Joeurencours-1] = scoreglobaljoueurencours
+    Affichagescore (addressescore,scoreglobaljoueurencours) /* affiche le score courant du joueur */
+    if (scoreglobaljoueurencours >= 100) {
+        message = "Joueur"+Joeurencours+" Gagnant"
+        alert (message)
+        Remiseazero()
+    }
+    Echangejoueur()
 })
