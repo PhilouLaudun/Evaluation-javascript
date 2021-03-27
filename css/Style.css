@@ -31,7 +31,7 @@ body {
 /* Rectangle de visualisation du joueur en cours */
 
 .rectangledroit {
-    position : absolute ;
+    position : fixed ;
     background: rgba(255, 0, 0, 0.178);
 }
 /* Centrage des éléments dans les cellules */
