@@ -16,14 +16,14 @@
     <div class="rectangledroit" id="Rectangle"></div> <!-- Rectangle visualisant le joueur en cours -->
     <!--   Bouton new game  -->
       <div name="zoneBtnNewGame" id="zoneBtnNewGame" class="zoneBtnNewGame centrage">
-          <button class="Boutonjeu" type="button" id="btnNewGame" >New Game</button>
+          <button class="Boutonjeu" type="button" id="btnNewGame"><ion-icon name="add-circle-outline"></ion-icon>New Game</button>
       </div>
       <!--  *********************************************************************************************************  -->
       <!-- Données Joueur 1  -->
       <!--                   -->
       <!--  Nom du Joueur-->
       <div name="Joueur1" id="Joueur1"class="Joueur1 centrage Textejoueur">
-        Joueur 1
+        Joueur 1      <span id="cerclejoueur1" class="cercle"></span>
       </div>
       <!--  Score global du Joueur-->
       <div name="Global1" id="Global1" class="Global1  centrage Texteglobal">
@@ -45,8 +45,8 @@
       <!--                                         -->
       <div name="Rolldice" id="Rolldice" class="Rolldice">
         <div></div>
-        <div><button class="Boutonjeu" type="button" id="btnRollDice">Roll Dice</button></div>
-        <div><button class="Boutonjeu" type="button"id="btnHold">Hold</button></div> 
+        <div><button class="Boutonjeu" type="button" id="btnRollDice"><ion-icon name="sync-outline"></ion-icon>Roll Dice</button></div>
+        <div><button class="Boutonjeu" type="button"id="btnHold"><ion-icon name="download-outline"></ion-icon>Hold</button></div> 
       </div>
       <div name="Gagnant" id="Gagnant" class="Gagnant centrage">
         <div id="zoneGagnant">
@@ -79,7 +79,7 @@
       </div>
       <!--  Nom du Joueur-->      
       <div name="Joueur2" id="Joueur2"class="Joueur2 centrage Textejoueur">
-          Joueur 2
+        Joueur 2      <span id="cerclejoueur2" class="cercle"></span>
       </div>
       <!--  *********************************************************************************************************  -->
       <!-- Cellule grid vide  -->
@@ -89,6 +89,7 @@
       <!-- Script javascript  -->
       <!--                    -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <!-- jquery depuis CDN -->
+      <script  src = "https://unpkg.com/ionicons@5.4.0/dist/ionicons.js" ></script>
       <script src="script.js"></script>
   </body>
 </html>

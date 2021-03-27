@@ -11,8 +11,8 @@ var modeecran = 1 /* variable contenant le mode d'affichhage de l'écran : 1 - s
 var oldmodeecran = modeecran /* variable contenant l'ancien mode d'affichage de l'écran avant le redimensionnement */
 var index /* varaible contenant l'index permettant de charger les références de positionnement du rectangle de sélection en focntion du mode d'affichage
             et du joueur en cours: mode 1- joueur 1 : 0 ; mode 1- joueur 2 : 1; mode 2- joueur 1 : 2 ; mode 2- joueur 2 : 3 */
-const modeecrancssrectangle = [{top : "0px", left : "0px", height : "50vh", width : "100%", right : "auto"},
-{bottom : "0px" , left : "0px", height : "50vh", width : "100%", top : "auto"}, 
+const modeecrancssrectangle = [{top : "0px", left : "0px", height : "55vh", width : "100%", right : "auto"},
+{bottom : "0px" , left : "0px", height : "45vh", width : "100%", top : "auto"}, 
 {top : "0px", left : "0px", height : "100%", width : "50vw", right : "auto"},
 {top : "0px", right : "0px", height : "100%", width : "50vw", left : "auto"}] /* tableau contenant les coordonnées de positionnement du rectangle de sélection
                                                                                  en fonction du mode d'affichage et du joueur: certaines coordonnées doivent être positionnées
@@ -43,6 +43,10 @@ function dimensionecran () {
   function affichagerectangle () {
     index = (modeecran-1)*2+(joueurencours-1) /* génére l'index servant à extraire du tableau la chaine correspondent au mode d'affichage et au joueur*/
     $("#Rectangle").css(modeecrancssrectangle[index]); /* affiche le rectangle de sélection à la position correcte*/
+    $("#cerclejoueur1").css('visibility','hidden')
+    $("#cerclejoueur2").css('visibility','hidden')
+    var adressepointselection = "#cerclejoueur"+joueurencours
+    $(adressepointselection).css('visibility','visible')
   }
 /* fonction : remise à zéro de l'interface, des scores et du joueur en cours */
 function Remiseazero() {
@@ -114,7 +118,7 @@ function Gagnant () {
     $("#btnRollDice").attr('disabled',true) /*invalide le bouton Roll Dice */
     $("#btnHold").attr('disabled',true) /*invalide le bouton Hold */
     $("#zoneGagnant").show() /* Affiche la zone du message pour le joueur vainqueur */
-    var message="Joueur "+joeurencours /* Créé le message désignant le joueur gagnant */
+    var message="Joueur "+joueurencours /* Créé le message désignant le joueur gagnant */
     $("#nomGagnant").text(message) /* Affiche le joueur gagnant */
 } 
 /* ---------------------------------------------------------------------------------------------------------------------------*/

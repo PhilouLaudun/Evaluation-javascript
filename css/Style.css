@@ -33,7 +33,6 @@ body {
 .rectangledroit {
     position : absolute ;
     background: rgba(255, 0, 0, 0.178);
-
 }
 /* Centrage des éléments dans les cellules */
 .centrage {
@@ -62,6 +61,9 @@ body {
 /* Mise en forme des boutons de commandes du jeu */
 .Boutonjeu {
     position: relative; /* force les boutons à rester au premier plan, associé à z-index*/
+    display: flex;
+    justify-content: center;
+    gap: 10px;
     text-decoration: none;
     padding: 10px;
     font-style: italic;
@@ -85,6 +87,7 @@ body {
 
 /* Mise en forme du texte des zones joueur */
 .Textejoueur {
+    gap : 60px;
     font-size: 4em;
     color: lightgray;
     font-style: italic;
@@ -109,6 +112,15 @@ body {
     font-size: 0.7em;
     color: black;
     font-weight: bold ;
+}
+#imagedes {
+    z-index: 1;
+}
+.cercle {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background:red;
 }
 
 /* ------------------------------------------------------------------------------------------------------------- */
