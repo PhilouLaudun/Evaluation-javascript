@@ -56,8 +56,8 @@ function Remiseazero() {
         addressescore = '#Scourant'+compteur
         Affichagescore (addressescore,0) /* affiche le score courant du joueur */ 
         addressescore = '#Global'+compteur
-        Affichagescore (addressescore,70) /* affiche le score global du joueur */
-        Joueur [compteur-1]  = 70 /* a modifier à 0 quand la fonction joueur gagnant focntionnera */
+        Affichagescore (addressescore,0) /* affiche le score global du joueur */
+        Joueur [compteur-1]  = 0 /* a modifier à 0 quand la fonction joueur gagnant focntionnera */
     }
     Imagedes.attr('src','/image/Image des 1.png') /* affiche l'image du dé par défaut, en l'occurence 1 */
     joueurencours = Generernombre(2) /* choisit au hasard le joueur qui commence */
